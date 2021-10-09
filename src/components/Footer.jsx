@@ -1,17 +1,10 @@
 import moment from "moment";
 export default function Footer() {
   return (
-    <footer className="text-center p-8 mx-auto w-full">
-      <p className="font-semibold tracking-wide text-md text-gray-500">
+    <footer className="text-center pb-6 mx-auto w-full">
+      <p className="font-light tracking-wide text-sm text-gray-500">
         Pedro Miguel Pereira © {moment().year()}
       </p>
     </footer>
   );
 }
-
-// // position: absolute;
-// left: 0;
-// bottom: 0;
-// height: 100px;
-// width: 100%;
-// overflow: hidden;
