@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import InfoCard from "./components/InfoCard";
 import CountryCard from "./components/CountryCard";
 import Divider from "./components/Divider";
+import Footer from "./components/Footer";
 
 function App() {
   const apiUrl = "https://disease.sh/v3/covid-19/countries/";
@@ -50,22 +51,25 @@ function App() {
   }, []);
 
   return (
-    <div className="max-w-screen-md lg:max-w-screen-xl mx-auto">
-      <SearchBar handleSearch={fetchCovidData} />
-      <CountryCard countryName={countryName} countryFlag={countryFlag} />
-      <Divider title="Today" />
-      <div className="grid sm:grid-cols-8 md:grid-cols-12 gap-6 mx-5 mb-5">
-        <InfoCard title="Cases" stat={todayCases} />
-        <InfoCard title="Deaths" stat={todayDeaths} />
-        <InfoCard title="Recovered" stat={todayRecovered} />
-        <InfoCard title="Active" stat={active} />
+    <div className="flex h-screen flex-col max-w-screen-md lg:max-w-screen-xl mx-auto">
+      <div className="flex-auto">
+        <SearchBar handleSearch={fetchCovidData} />
+        <CountryCard countryName={countryName} countryFlag={countryFlag} />
+        <Divider title="Today" />
+        <div className="grid sm:grid-cols-8 md:grid-cols-12 gap-6 mx-5 mb-5">
+          <InfoCard title="Cases" stat={todayCases} />
+          <InfoCard title="Deaths" stat={todayDeaths} />
+          <InfoCard title="Recovered" stat={todayRecovered} />
+          <InfoCard title="Active" stat={active} />
+        </div>
+        <Divider title="All time" />
+        <div className="grid md:grid-cols-8 lg:grid-cols-12 gap-6 mx-5 mb-5">
+          <InfoCard title="Cases" stat={cases} />
+          <InfoCard title="Deaths" stat={deaths} />
+          <InfoCard title="Recovered" stat={recovered} />
+        </div>
       </div>
-      <Divider title="All time" />
-      <div className="grid md:grid-cols-8 lg:grid-cols-12 gap-6 mx-5 mb-5">
-        <InfoCard title="Cases" stat={cases} />
-        <InfoCard title="Deaths" stat={deaths} />
-        <InfoCard title="Recovered" stat={recovered} />
-      </div>
+      <Footer />
     </div>
   );
 }
